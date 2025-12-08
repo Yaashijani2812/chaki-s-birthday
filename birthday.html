@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>10 Reasons Why I Love You</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(#000000, #dfadb4);
+    overflow-x: hidden;
+    color: #333;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    color: rgba(255, 70, 120, 0.8);
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-120vh) translateX(40px) rotate(360deg); opacity: 0; }
+  }
+
+  /* Scroll reveal */
+  .hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+  }
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.7rem;
+    color: #fff;
+    margin-top: 40px;
+    animation: fadeIn 2s ease;
+  }
+
+  .reason {
+    background: rgba(255,255,255,0.7);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 35px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .reason img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .reason h2 {
+    margin: 0;
+    color: #d63384;
+    font-size: 1.6rem;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;} 
+  }
+
+  /* Final popup */
+  #finalMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    display: none;
+    animation: pop 0.6s ease;
+  }
+
+  @keyframes pop {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Background music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_655cc77665.mp3" type="audio/mpeg">
+</audio>
+
+<h1>10 Reasons Why I Love You ❤️</h1>
+<div class="container">
+
+  <!-- 10 reasons with scroll reveal -->
+  <div class="reason hidden">
+    <img src="image1.jpg" />
+    <h2>1. You make everything fun ✨</h2>
+    <p>You turn even boring moments into something magical.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image2.jpg" />
+    <h2>2. Your smile is my favourite thing 😄</h2>
+    <p>It makes my whole mood brighter instantly.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image3.jpg" />
+    <h2>3. You support me in everything 🤝</h2>
+    <p>You believe in me more than I do sometimes.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image4.jpg" />
+    <h2>4. You are caring and soft 💗</h2>
+    <p>You notice the small things and that means so much.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image5.jpg" />
+    <h2>5. You bring peace to my chaos 🌿</h2>
+    <p>Your presence feels like calm after a storm.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image6.jpg" />
+    <h2>6. You’re effortlessly cute 🧸</h2>
+    <p>Your little expressions are my favourite thing.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image7.jpg" />
+    <h2>7. You understand me deeply 🌙</h2>
+    <p>You get me in a way no one ever has.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image8.jpg" />
+    <h2>8. You make me want to grow 🌟</h2>
+    <p>Your kindness inspires me to be better everyday.</p>
+  </div>
+
+  <div class="reason hidden">
+    <img src="image9.jpg" />
+    <h2>9. You feel like home 🏡</h2>
+    <p>With you, everything feels safe.</p>
+  </div>
+
+  <div class="reason hidden" id="finalTrigger">
+    <img src="image10.jpg" />
+    <h2>10. You’re YOU — and that’s everything 💖</h2>
+    <p>And loving you is the easiest thing in the world.</p>
+  </div>
+
+</div>
+
+
+<!-- Final message popup -->
+<div id="finalMessage">
+  <h2>💝 Surprise! 💝</h2>
+  <p>You mean more to me than words could ever explain.</p>
+  <p>Thank you for being you. Happy Birthday! 🎉❤️</p>
+</div>
+
+<script>
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 600);
+
+// Scroll reveal
+const elements = document.querySelectorAll('.hidden');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+elements.forEach(el => observer.observe(el));
+
+// Final message popup
+const finalTrigger = document.getElementById('finalTrigger');
+const finalPopup = document.getElementById('finalMessage');
+
+finalTrigger.addEventListener('click', () => {
+  finalPopup.style.display = 'block';
+});
+</script>
+
+</body>
+</html>
